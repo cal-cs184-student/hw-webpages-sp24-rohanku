@@ -17,10 +17,15 @@ To calculate which side of a line a point `(x, y)` falls on, we compute
 
 where `(x0, y0)` and `(x1, y1)` are two points on the line.
 
-If all the line tests or are
+If the line test scores for each of the triangle's three edges are all nonnegative or all nonpositive,
+the point `(x, y)` is inside the triangle. Note that this acccounts for both possible winding orders of the triangle.
 
+Our algorithm checks each sample within the bounding box of the triangle. Note in particular that it does not
+check one sample point for each frame in the frame buffer.
 
-This algorithm checks each sample within nonnegativeding boxnonpositivetriangle.
+A screenshot of `basic/test4.svg` is shown below.
+
+![a screenshot of test 4, showing basic triangle rasterization](./images/task1.png)
 
 ## Task 2
 
@@ -45,6 +50,12 @@ the triangle, but rather can visually show pixels that are only partially inside
 ![](images/task2_4.png)
 ![](images/task2_6.png)
 
+## Task 3
+
+Here is a picture of cubeman waving while jumping:
+
+![a picture of cubeman waving while jumping](./images/my_robot.svg)
+
 ## Task 4
 
 Barycentric coordinates essentially interpolate linearly between the 3 vertices of a triangle. The 3 coordinates, alpha, beta, and gamma,
@@ -57,6 +68,58 @@ the pixels become closer to the color corresponding to that vertex. As we go bet
 A screenshot of `basic/test7.svg` is shown below.
 
 ![](images/task4_test7.png)
+
+
+## Task 5
+
+Texture mapping allows us to associate additional information to vertices in the geometry
+we are rendering.
+For the purposes of this homework assignment, we implemented basic texture mapping for triangles.
+Given the UV coordinates of each vertex of a triangle and its associated texture,
+we must calculate the color of each pixel in the interior of the triangle.
+We accomplish this by modifying our colored triangle rasterizer from task 4.
+
+For each pixel that we find to be within the triangle, we compute the barycentric coordinates
+of that pixel with respect to the three vertices of the triangle.
+Using these barycentric coordinates, and the UV coordinates of the vertices,
+we find an interpolated UV coordinate for the pixel we are currently rasterizing.
+We then sample the texture at the interpolated UV coordinates, and draw the resulting color into our sample buffer.
+
+We implemented two sampling methods:
+* Nearest: in this method, we find the texture pixel nearest to a particular UV coordinate,
+  and use the color of that texture pixel as the color of the triangle.
+* Bilinear: in this method, we consider the four texture pixels that surround the UV coordinate we are considering.
+  We then linearly interpolate among those four pixel colors.
+
+Intuitively, bilinear sampling can smooth out sharp transitions in pixel color,
+especially when a large part of screen space maps to a relatively small part of the texture space.
+In these situations, nearest neighbor sampling would produce a sharp, visible edge when the sampler switches
+from using one texture pixel to the next texture pixel.
+
+Here are screenshots demonstrating the difference between the sampling methods.
+
+Nearest sampling, 1 sample per pixel:
+
+![](./images/task5_nearest_1x.png)
+
+Bilinear sampling, 1 sample per pixel:
+
+![](./images/task5_bilinear_1x.png)
+
+Nearest sampling, 16 samples per pixel:
+
+![](./images/task5_nearest_16x.png)
+
+Bilinear sampling, 16 samples per pixel:
+
+![](./images/task5_bilinear_16x.png)
+
+We can see that bilinear sampling makes the image significantly smoother.
+Supersampling does not help much here: when we zoom in on the texture, most or all
+of the 16 samples of each pixel will map to the same texture pixel, and thus get the same color.
+Increasing the supersampling ratio does not remove artifacts introduced by nearest sampling.
+
+The difference between bilinear and nearest would be less noticeable if we were viewing a texture at a lower magnification.
 
 ## Task 6
 
