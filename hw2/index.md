@@ -2,6 +2,10 @@
 
 ## Overview
 
+We implemented algorithms for evaluating Bezier curves and manipulating mesh data structures. It was interesting seeing how the mesh data structure
+covered in class could be used to run a variety of useful mesh algorithms in constant time. Debugging meshes had a bit of a learning curve, but it was
+fun to see the final working product.
+
 ## Part 1
 
 We implemented de Casteljau's algorithm to evaluate points along Bezier curves.
