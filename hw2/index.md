@@ -94,6 +94,54 @@ We can repeat this procedure for several u and v to build the full Bezier surfac
 
 Here are screenshots of `bez/teapot.bez`:
 
-![](q2wireframe.png)
+![](images/q2wireframe.png)
 
-![](q2nowireframe.png)
+![](images/q2nowireframe.png)
+
+## Part 4
+
+Consider the diagram shown below (taken from the HW2 spec):
+
+![](images/q4flipping.png)
+
+Our edge flipping implementation converts the b-c half edge in the original
+geometry to be the d-a half edge in the final geometry.
+Similarly, the c-b half edge becomes the a-d half edge.
+We do this by modifying the vertex property of those half edges.
+
+Here's a (non-exhaustive) list of other things we modified in the mesh geometry:
+* The next pointer of a-b becomes b-d
+* The next pointer of b-c becomes a-b
+* The next pointer of c-b becomes d-c
+* The next pointer of c-a becomes a-d (which is c-b in the original geometry)
+* The next pointer of b-d becomes d-a (which is b-c in the original geometry)
+* The next pointer of d-c becomes c-a
+* Point c-a's vertex's halfedge to c-a
+* Point b-d's vertex's halfedge to b-d
+* Face abc becomes abd; set the halfedge of this face to a-b
+* Face bdc becomes dca; set the halfedge of this face to d-c
+
+After performing all these modifications, we return the halfedge that was originally c-b
+(which is now a-d).
+
+While we didn't necessarily use any interesting implementation or debugging tricks, we did:
+* Use the `setNeighbors` function to ensure we were setting all pointers.
+* Identify where segfaults occurred by printing to stdout and flushing stdout immediately.
+  Without flushing, the program may exit before text appears in the terminal.
+
+Some of the issues we encountered while debugging:
+* Got segfaults when using `getHalfedge()`. Resolved by using `halfedge()` instead.
+* Got segfaults when forgetting to set some of the pointers. Resolved by using `setNeighbors`
+  to more conveniently set more pointers.
+* Had missing faces after the flip. This was due to forgetting to set the halfedge pointer
+  of faces. Once we set the pointer correctly, the issue was resolved.
+
+Here are images of the teapot before and after flipping several edges (including flipping some edges twice).
+
+Before:
+
+![](images/q4beforeflip.png)
+
+After:
+
+![](images/q4afterflip.png)
