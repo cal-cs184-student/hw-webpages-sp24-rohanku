@@ -89,4 +89,46 @@ $$ t = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.$$
 
 We discard any solutions not within the minimum and maximum allowed `t` of the ray.
 
+## Part 3
 
+In this part, we implement the diffuse BSDF, zero bounce illumination,
+and direct illumination with both uniform hemisphere sampling and importance sampling.
+
+### Uniform Hemisphere Sampling
+
+In this method of sampling, we are given the intersection point of a camera ray
+with an object in the scene. Our goal is to estimate how much light arrives
+at that intersection point, so we can calculate how much will be reflected to the camera.
+We will estimate the illumination, we will average a number of Monte Carlo samples drawn uniformly
+from a unit hemisphere.
+
+For each sample from the hemisphere, we will:
+* cast a ray in the sampled direction
+* determine if it intersects any objects in the scene
+* if it does intersect an object, and that object is a light source,
+  add the emission of the light source to our current estimate,
+  scaled appropriately based on our material's BSDF, the angle of incidence,
+  the number of samples, and the PDF (which is constant here due to uniform random sampling).
+
+We must carefully track which calculations we do in object space and which calculations we do in
+world space.
+
+In more detailed pseudocode, our algorithm looks like this:
+
+```
+def estimate_l(curr_intersection):
+    o2w, w2o = make_coordinate_space(curr_intersection.normal)
+    L = (0, 0, 0)
+    for i = 1 to numSamples:
+      w_in = sample_hemisphere()
+      costheta = dot(w_in, w2o * curr_intersection.normal)
+      pdf = 1 / (2 * PI)
+      ray = Ray(o=hit_point, d=o2w * w_in)
+      hits, source_intersection = intersect(ray)
+      if hits:
+        L += source_intersection.object.emission * curr_intersection.bsdf.f(w_in, w_out) * costheta / (pdf * numSamples)
+```
+
+### Importance Sampling
+
+TODO
