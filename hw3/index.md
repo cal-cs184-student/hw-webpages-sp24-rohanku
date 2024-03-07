@@ -138,6 +138,8 @@ TODO
 
 ## Part 2
 
+### BVH Construction
+
 The BVH is constructed recursively. First, the bounding box of the current node is set to the union of the primitives' bounding boxes.
 The `start` and `end` iterators are pointed to the start and end of the list of primitives.
 If the number of nodes is smaller than `max_leaf_size`, then the node is returned immediately.
@@ -147,3 +149,65 @@ of the average centroid in which the current bounding box is the longest. If eit
 from the non-empty set to the empty one.
 
 We then recursively construct the left and right nodes, point to them, and return the finalized node.
+
+### Large DAE files
+
+`sky/dragon.dae`
+
+![sky/dragon.dae](images/dragon_normal.png)
+
+`meshedit/beast.dae`
+
+![meshedit/beast.dae](images/beast_normal.png)
+
+`meshedit/maxplanck.dae`
+
+![meshedit/maxplanck.dae](images/maxplanck_normal.png)
+
+### Rendering Time Comparison
+
+For `meshedit/cow.dae`, the rendering time with BVH acceleration is 0.0460 seconds. Without BVH acceleration, the rendering time is 7.8535 seconds.
+For `meshedit/teapot.dae`, the rendering time with BVH acceleration is 0.0450 seconds. Without BVH acceleration, the rendering time is 3.7334 seconds.
+For `sky/CBbunny.dae`, the rendering time with BVH acceleration is 0.0327 seconds. Without BVH acceleration, the rendering time is 35.9606 seconds.
+With BVH acceleration, rendering is significantly faster due to much fewer intersections being tested per ray.
+
+## Part 4
+
+### Indirect Lighting Function
+
+First, if we are accumulating bounces or the depth of the ray is one less than the max ray depth, we compute the one bounce radiance by calling `one_bounce_radiance`
+and add it to `L_out`. We then sample an input vector from the BSDF of the current intersection and use that to find the next intersection of interest. If
+the new vector intersects the scene, we recurse by calling `at_least_once_bounce_radiance` and adding the result to `L_out`.
+
+### Images with Global Illumination
+
+### Direct and Indirect Illumination Comparison
+
+### `m`th Bounce Renders
+
+###  `max_ray_depth` Renders
+
+### Russian Roulette Renders
+
+### Sample-per-pixel Renders
+
+## Part 5
+
+### Adaptive Sampling
+
+Adaptive sampling essentially samples pixels until they converge, allowing us to spend fewer samples on pixels that converge faster and more samples on pixels that converge slower.
+To implement adaptive sampling, we modified `PathTracer::raytrace_pixel` to keep running `s1` and `s2` sums as we sample. Every `samplesPerBatch` samples, we compute `mu` and `sigma` from
+`s1` and `s2`, then use the provided criteria to decide if we should break from the sampling loop. Once we break from the loop, we normalize the pixel value by the actual number of samples
+(which may be less that the provided number of samples if the pixel converged earlier).
+
+### Images
+
+`sky/CBspheres_lambertian.dae`
+
+![sky/CBspheres_lambertian.dae](images/CBspheres_lambertian_adaptive.png)
+![sky/CBspheres_lambertian.dae rate](images/CBspheres_lambertian_adaptive_rate.png)
+
+`sky/CBbunny.dae`
+
+![sky/CBbunny.dae](images/CBbunny_adaptive.png)
+![sky/CBbunny.dae rate](images/CBbunny_adaptive_rate.png)
