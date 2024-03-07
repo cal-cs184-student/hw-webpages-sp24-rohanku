@@ -232,6 +232,12 @@ the new vector intersects the scene, we recurse by calling `at_least_once_bounce
 
 ### Images with Global Illumination
 
+![](./images/p4_spheres_global.png)
+
+![](./images/p4_bunny_global.png)
+
+![](./images/p4_bench_global.png)
+
 ### Direct and Indirect Illumination Comparison
 
 ### `m`th Bounce Renders
