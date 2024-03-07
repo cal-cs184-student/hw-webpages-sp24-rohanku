@@ -52,7 +52,7 @@ We now have a ray in world space coordinates.
 We used the Moller Trumbore algorithm to perform ray-triangle intersection.
 The Moller Trumbore algorithm solves the following system of equations:
 
-$$ O + tD = (1 - b_1 - b_2) P_0 + b_1 P_1 + b_2 P_2 $$
+\[ O + tD = (1 - b_1 - b_2) P_0 + b_1 P_1 + b_2 P_2 \]
 
 where $O$ is the origin of the ray, $D$ is the direction of the ray, and $P_0$, $P_1$, and $P_2$ are vertices of the triangle.
 This is a system of 3 equations in 3 unknowns ($t, b_1, b_2$).
