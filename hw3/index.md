@@ -131,4 +131,12 @@ def estimate_l(curr_intersection):
 
 ### Importance Sampling
 
-TODO
+The procedure for importance sampling is very similar to the procedure described above,
+except that instead of sampling `w_in` uniformly over the hemisphere, we sample
+`w_in` over the space of rays that point towards a light source.
+We perform a configurable number of samples for each area light,
+and 1 sample for each point light.
+
+Instead of using a constant PDF of $\frac{1}{2\pi}$, we use the PDF from
+sampling over the area of the light.
+
