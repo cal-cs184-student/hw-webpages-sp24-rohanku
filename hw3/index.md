@@ -84,7 +84,7 @@ $P$ is the intersection point; $C$ is the center of the sphere; and $R$ is the r
 This system of equations is a quadratic in $t$, and can be written as
 
 $$ a t^2 + bt + c = 0 $$
-where $a = d \cdot d$, $b = 2 (o - c) \cdot d$, and $c = (o - c) \cdot (o - c) - R^2$.
+where $a = D \cdot D$, $b = 2 (O - C) \cdot d$, and $c = (O - C) \cdot (O - C) - R^2$.
 
 We solve the quadratic using the quadratic formula
 
