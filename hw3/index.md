@@ -1,7 +1,3 @@
-<script type="text/javascript"
-  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
 # Homework 3
 
 ## Overview
@@ -56,7 +52,7 @@ We now have a ray in world space coordinates.
 We used the Moller Trumbore algorithm to perform ray-triangle intersection.
 The Moller Trumbore algorithm solves the following system of equations:
 
-\[ O + tD = (1 - b_1 - b_2) P_0 + b_1 P_1 + b_2 P_2 \]
+\\[ O + tD = (1 - b_1 - b_2) P_0 + b_1 P_1 + b_2 P_2 \\]
 
 where $O$ is the origin of the ray, $D$ is the direction of the ray, and $P_0$, $P_1$, and $P_2$ are vertices of the triangle.
 This is a system of 3 equations in 3 unknowns ($t, b_1, b_2$).
@@ -235,6 +231,12 @@ and add it to `L_out`. We then sample an input vector from the BSDF of the curre
 the new vector intersects the scene, we recurse by calling `at_least_once_bounce_radiance` and adding the result to `L_out`.
 
 ### Images with Global Illumination
+
+![](./images/p4_spheres_global.png)
+
+![](./images/p4_bunny_global.png)
+
+![](./images/p4_bench_global.png)
 
 ### Direct and Indirect Illumination Comparison
 
