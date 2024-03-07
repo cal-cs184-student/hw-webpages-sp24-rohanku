@@ -178,6 +178,49 @@ and 1 sample for each point light.
 Instead of using a constant PDF of $\frac{1}{2\pi}$, we use the PDF from
 sampling over the area of the light.
 
+### Images
+
+Here are some images that depict the properties of the uniform hemisphere sampling
+and the light source importance sampling algorithms.
+The images below were rendered with 64 samples per pixel and 16 light rays.
+
+CBbunny, hemisphere sampling:
+
+![](./images/p3_bunny_hemisphere.png)
+
+CBbunny, importance sampling:
+
+![](./images/p3_bunny_importance.png)
+
+CBdragon, hemisphere sampling:
+
+![](./images/p3_dragon_hemisphere.png)
+
+CBdragon, importance sampling:
+
+![](./images/p3_dragon_importance.png)
+
+
+Here is the `CBspheres_lambertian` scene with various number of light rays
+and one sample per pixel with light-based importance sampling.
+
+$l=1$:
+
+![](./images/p3_spheres_l01.png)
+
+$l=4$:
+
+![](./images/p3_spheres_l04.png)
+
+$l=16$:
+
+![](./images/p3_spheres_l16.png)
+
+$l=64$:
+
+![](./images/p3_spheres_l64.png)
+
+TODO: Compare the results between uniform hemisphere sampling and lighting sampling in a one-paragraph analysis.
 
 ## Part 4
 
