@@ -92,6 +92,41 @@ $$ t = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.$$
 
 We discard any solutions not within the minimum and maximum allowed `t` of the ray.
 
+## Part 2
+
+### BVH Construction
+
+The BVH is constructed recursively. First, the bounding box of the current node is set to the union of the primitives' bounding boxes.
+The `start` and `end` iterators are pointed to the start and end of the list of primitives.
+If the number of nodes is smaller than `max_leaf_size`, then the node is returned immediately.
+
+Otherwise, we find the average of the centroids of all of the primitive. We then split the primitives by centroid according to the axis
+of the average centroid in which the current bounding box is the longest. If either the left or right sets are empty, we move one element
+from the non-empty set to the empty one.
+
+We then recursively construct the left and right nodes, point to them, and return the finalized node.
+
+### Large DAE files
+
+`sky/dragon.dae`
+
+![sky/dragon.dae](images/dragon_normal.png)
+
+`meshedit/beast.dae`
+
+![meshedit/beast.dae](images/beast_normal.png)
+
+`meshedit/maxplanck.dae`
+
+![meshedit/maxplanck.dae](images/maxplanck_normal.png)
+
+### Rendering Time Comparison
+
+For `meshedit/cow.dae`, the rendering time with BVH acceleration is 0.0460 seconds. Without BVH acceleration, the rendering time is 7.8535 seconds.
+For `meshedit/teapot.dae`, the rendering time with BVH acceleration is 0.0450 seconds. Without BVH acceleration, the rendering time is 3.7334 seconds.
+For `sky/CBbunny.dae`, the rendering time with BVH acceleration is 0.0327 seconds. Without BVH acceleration, the rendering time is 35.9606 seconds.
+With BVH acceleration, rendering is significantly faster due to much fewer intersections being tested per ray.
+
 ## Part 3
 
 In this part, we implement the diffuse BSDF, zero bounce illumination,
@@ -134,42 +169,15 @@ def estimate_l(curr_intersection):
 
 ### Importance Sampling
 
-TODO
+The procedure for importance sampling is very similar to the procedure described above,
+except that instead of sampling `w_in` uniformly over the hemisphere, we sample
+`w_in` over the space of rays that point towards a light source.
+We perform a configurable number of samples for each area light,
+and 1 sample for each point light.
 
-## Part 2
+Instead of using a constant PDF of $\frac{1}{2\pi}$, we use the PDF from
+sampling over the area of the light.
 
-### BVH Construction
-
-The BVH is constructed recursively. First, the bounding box of the current node is set to the union of the primitives' bounding boxes.
-The `start` and `end` iterators are pointed to the start and end of the list of primitives.
-If the number of nodes is smaller than `max_leaf_size`, then the node is returned immediately.
-
-Otherwise, we find the average of the centroids of all of the primitive. We then split the primitives by centroid according to the axis
-of the average centroid in which the current bounding box is the longest. If either the left or right sets are empty, we move one element
-from the non-empty set to the empty one.
-
-We then recursively construct the left and right nodes, point to them, and return the finalized node.
-
-### Large DAE files
-
-`sky/dragon.dae`
-
-![sky/dragon.dae](images/dragon_normal.png)
-
-`meshedit/beast.dae`
-
-![meshedit/beast.dae](images/beast_normal.png)
-
-`meshedit/maxplanck.dae`
-
-![meshedit/maxplanck.dae](images/maxplanck_normal.png)
-
-### Rendering Time Comparison
-
-For `meshedit/cow.dae`, the rendering time with BVH acceleration is 0.0460 seconds. Without BVH acceleration, the rendering time is 7.8535 seconds.
-For `meshedit/teapot.dae`, the rendering time with BVH acceleration is 0.0450 seconds. Without BVH acceleration, the rendering time is 3.7334 seconds.
-For `sky/CBbunny.dae`, the rendering time with BVH acceleration is 0.0327 seconds. Without BVH acceleration, the rendering time is 35.9606 seconds.
-With BVH acceleration, rendering is significantly faster due to much fewer intersections being tested per ray.
 
 ## Part 4
 
