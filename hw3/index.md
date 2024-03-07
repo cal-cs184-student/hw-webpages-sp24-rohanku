@@ -84,7 +84,7 @@ $P$ is the intersection point; $C$ is the center of the sphere; and $R$ is the r
 This system of equations is a quadratic in $t$, and can be written as
 
 $$ a t^2 + bt + c = 0 $$
-where $a = d \cdot d$, $b = 2 (o - c) \cdot d$, and $c = (o - c) \cdot (o - c) - R^2$.
+where $a = D \cdot D$, $b = 2 (O - C) \cdot d$, and $c = (O - C) \cdot (O - C) - R^2$.
 
 We solve the quadratic using the quadratic formula
 
@@ -192,13 +192,13 @@ CBbunny, importance sampling:
 
 ![](./images/p3_bunny_importance.png)
 
-CBdragon, hemisphere sampling:
+CBspheres (Lambertian), hemisphere sampling:
 
-![](./images/p3_dragon_hemisphere.png)
+![](./images/p3_spheres_hemisphere.png)
 
-CBdragon, importance sampling:
+CBspheres (Lambertian), importance sampling:
 
-![](./images/p3_dragon_importance.png)
+![](./images/p3_spheres_importance.png)
 
 
 Here is the `CBspheres_lambertian` scene with various number of light rays
@@ -242,7 +242,60 @@ the new vector intersects the scene, we recurse by calling `at_least_once_bounce
 
 ### `m`th Bounce Renders
 
+Here are renderings of CBbunny with accumulated bounces disabled and 1024 samples per pixel.
+
+$m=0$:
+
+![](./images/bunny_bounce_0.png)
+
+$m=1$:
+
+![](./images/bunny_bounce_1.png)
+
+$m=2$:
+
+![](./images/bunny_bounce_2.png)
+
+$m=3$:
+
+![](./images/bunny_bounce_3.png)
+
+$m=4$:
+
+![](./images/bunny_bounce_4.png)
+
+$m=5$:
+
+![](./images/bunny_bounce_5.png)
+
 ###  `max_ray_depth` Renders
+
+Here are renderings of CBbunny with accumulated bounces (limited by max ray depth)
+and 1024 samples per pixel.
+
+$m=0$:
+
+![](./images/bunny_accum_0.png)
+
+$m=1$:
+
+![](./images/bunny_accum_1.png)
+
+$m=2$:
+
+![](./images/bunny_accum_2.png)
+
+$m=3$:
+
+![](./images/bunny_accum_3.png)
+
+$m=4$:
+
+![](./images/bunny_accum_4.png)
+
+$m=5$:
+
+![](./images/bunny_accum_5.png)
 
 ### Russian Roulette Renders
 
