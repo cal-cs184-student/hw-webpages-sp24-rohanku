@@ -268,6 +268,8 @@ $m=5$:
 
 ![](./images/bunny_bounce_5.png)
 
+TODO: Explain in your writeup what you see for the 2nd and 3rd bounce of light, and how it contributes to the quality of the rendered image compared to rasterization. Use 1024 samples per pixel.
+
 ###  `max_ray_depth` Renders
 
 Here are renderings of CBbunny with accumulated bounces (limited by max ray depth)
@@ -324,6 +326,34 @@ $m=5$:
 ![](./images/bunny_roulette_5.png)
 
 ### Sample-per-pixel Renders
+
+1 sample-per-pixel
+
+![](./images/p4_bunny_s0001.png)
+
+2 samples-per-pixel
+
+![](./images/p4_bunny_s0002.png)
+
+4 samples-per-pixel
+
+![](./images/p4_bunny_s0004.png)
+
+8 samples-per-pixel
+
+![](./images/p4_bunny_s0008.png)
+
+16 samples-per-pixel
+
+![](./images/p4_bunny_s0016.png)
+
+64 samples-per-pixel
+
+![](./images/p4_bunny_s0064.png)
+
+1024 samples-per-pixel
+
+![](./images/p4_bunny_s1024.png)
 
 ## Part 5
 
