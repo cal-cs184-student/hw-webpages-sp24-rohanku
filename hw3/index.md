@@ -268,7 +268,9 @@ $m=5$:
 
 ![](./images/bunny_bounce_5.png)
 
-TODO: Explain in your writeup what you see for the 2nd and 3rd bounce of light, and how it contributes to the quality of the rendered image compared to rasterization. Use 1024 samples per pixel.
+The 2nd bounce of light seems to be lighting the underside of the bunny, while the 3rd bounce seems to mostly have illumination along the walls of the scene.
+These contribute to the quality of the image by lessening the darkness of the shadows, making the rabbit seem more realistic rather than having very dark portions
+away from the light.
 
 ###  `max_ray_depth` Renders
 
@@ -321,7 +323,7 @@ $m=4$:
 
 ![](./images/bunny_roulette_4.png)
 
-$m=5$:
+$m=100$:
 
 ![](./images/bunny_roulette_5.png)
 
@@ -354,6 +356,8 @@ $m=5$:
 1024 samples-per-pixel
 
 ![](./images/p4_bunny_s1024.png)
+
+The higher the samples-per-pixel, the less noisy the scene becomes.
 
 ## Part 5
 
