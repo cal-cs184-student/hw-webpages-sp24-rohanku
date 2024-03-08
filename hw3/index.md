@@ -299,6 +299,30 @@ $m=5$:
 
 ### Russian Roulette Renders
 
+$m=0$:
+
+![](./images/bunny_roulette_0.png)
+
+$m=1$:
+
+![](./images/bunny_roulette_1.png)
+
+$m=2$:
+
+![](./images/bunny_roulette_2.png)
+
+$m=3$:
+
+![](./images/bunny_roulette_3.png)
+
+$m=4$:
+
+![](./images/bunny_roulette_4.png)
+
+$m=5$:
+
+![](./images/bunny_roulette_5.png)
+
 ### Sample-per-pixel Renders
 
 ## Part 5
