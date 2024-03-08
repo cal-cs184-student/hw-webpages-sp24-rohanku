@@ -220,7 +220,14 @@ $l=64$:
 
 ![](./images/p3_spheres_l64.png)
 
-TODO: Compare the results between uniform hemisphere sampling and lighting sampling in a one-paragraph analysis.
+For the same number of samples-per-pixel, lighting importance sampling produces
+a less noisy image than uniform hemisphere sampling.
+However, there is little to no difference in areas of the image that are in the shadows.
+This makes sense, as rays shot from shadowed areas towards a light source are blocked,
+and hence the direct illumination is zero regardless of whether you use
+hemisphere sampling or lighting sampling.
+Of course, there is also no difference in how the light source itself is rendered
+(when only considering zero and one bounce radiance).
 
 ## Part 4
 
