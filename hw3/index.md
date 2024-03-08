@@ -401,5 +401,5 @@ To implement adaptive sampling, we modified `PathTracer::raytrace_pixel` to keep
 ## Collaboration
 
 We divided up the parts and worked on them in parallel, then came back together to integrate our changes. Rahul worked on parts 1, 3, and 4, and Rohan worked on parts 2, 3, and 5.
-The homework went relatively smoothly, with a couple bugs with our BVH implementation that took renders to take a lot longer than they should have. We learned a lot about how ray-tracing works
+The homework went relatively smoothly, with a couple bugs with our BVH implementation that caused renders to take a lot longer than they should have. We learned a lot about how ray-tracing works
 and the practical considerations when creating a ray tracing algorithm that is feasible for a large number of primitives.
