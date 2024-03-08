@@ -247,6 +247,17 @@ the new vector intersects the scene, we recurse by calling `at_least_once_bounce
 
 ### Direct and Indirect Illumination Comparison
 
+Direct illumination only
+
+![](./images/bunny_accum_1.png)
+
+Indirect illumination only
+
+![](./images/bunny_indirect_only.png)
+
+The render with indirect illumination only shows the light bouncing off the walls and floor back to the bunny, while the direct illumination
+only shows the light source and light that illuminates the top of the bunny.
+
 ### `m`th Bounce Renders
 
 Here are renderings of CBbunny with accumulated bounces disabled and 1024 samples per pixel.
