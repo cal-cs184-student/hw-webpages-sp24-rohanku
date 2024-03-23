@@ -77,6 +77,10 @@ Cloth with bump mapping:
 Sphere with displacement mapping:
 ![](images/p5_sphere_displacement.png)
 
+Displacement mapping physically moves the vertices and their normals, while bump mapping perturbs the normals without
+actually moving the vertices. This can be seen along the edge of the sphere/cloth in the renders, where the displacement mapping
+has modifications in the actual mesh geometry.
+
 Sphere with bump mapping (coarseness `16`):
 ![](images/p5_sphere_bump_16.png)
 
@@ -88,6 +92,9 @@ Sphere with bump mapping (coarseness `128`):
 
 Sphere with displacement mapping (coarseness `128`):
 ![](images/p5_sphere_displacement_128.png)
+
+For lower coarseness, the displacement mapping does not fit as well with the texture since it does not reflect the details of the texture.
+With the higher coarseness, the texture corresponds well to the displacement of the vertices, and the displacement map looks more convincing.
 
 ### Mirror shader
 
