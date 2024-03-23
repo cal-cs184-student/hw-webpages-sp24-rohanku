@@ -22,6 +22,8 @@ All constraints:
 
 ## Part 3
 
+### Sphere
+
 `ks = 5000`
 ![](images/p3_5000.png)
 
@@ -32,6 +34,9 @@ All constraints:
 ![](images/p3_50000.png)
 
 For higher `ks` values, the cloth becomes more stiff, causing it to have less folds and conform less to the shape of the sphere.
+
+### Plane
+![](images/p3_plane.png)
 
 ## Part 5
 
