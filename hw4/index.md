@@ -36,11 +36,11 @@ Here's a visual comparison:
 
 `ks = 100 N/m`:
 
-![](images/p2_ks_100.png]
+![](images/p2_ks_100.png)
 
 `ks = 50000 N/m`:
 
-![](images/p2_ks_50k.png]
+![](images/p2_ks_50k.png)
 
 ### Density
 
@@ -53,11 +53,11 @@ A visual comparison of the final states:
 
 `density = 1 g/cm2`
 
-![](images/p2_density_1.png]
+![](images/p2_density_1.png)
 
 `density = 100 g/cm2`
 
-![](images/p2_density_100.png]
+![](images/p2_density_100.png)
 
 ### Damping
 
@@ -70,18 +70,18 @@ Here is a comparison of the cloth as it is falling.
 
 Damping = 1%
 
-![](images/p2_high_damping.png]
+![](images/p2_high_damping.png)
 
 Damping = 0%
 
-![](images/p2_low_damping.png]
+![](images/p2_low_damping.png)
 
 ### Final State
 
 Here is an image of the cloth from `pinned4` in its final state.
 All parameters were set at their default values.
 
-![](images/p2_default_pinned4.png]
+![](images/p2_default_pinned4.png)
 
 
 ## Part 3
@@ -101,13 +101,13 @@ For higher `ks` values, the cloth becomes more stiff, causing it to have less fo
 
 Here are a few images of the falling cloth. All parameters are set to the default values.
 
-![](images/p4_img0.png]
+![](images/p4_img0.png)
 
-![](images/p4_img1.png]
+![](images/p4_img1.png)
 
-![](images/p4_img2.png]
+![](images/p4_img2.png)
 
-![](images/p4_img3.png]
+![](images/p4_img3.png)
 
 Using a lower density seems to reduce the driving force pushing the cloth to be flat;
 even after several seconds, the cloth is noticeably more wrinkled, and only a small
@@ -115,22 +115,22 @@ portion of it lies flat on the plane.
 
 Here are images showing the behavior of the cloth with `density = 1 g/cm2`.
 
-![](images/p4_dens1_img0.png]
+![](images/p4_dens1_img0.png)
 
-![](images/p4_dens1_img1.png]
+![](images/p4_dens1_img1.png)
 
-![](images/p4_dens1_img2.png]
+![](images/p4_dens1_img2.png)
 
 A high `ks` makes the cloth "stiffer". It forms fewer wrinkles, and
 it takes longer to flatten out wrinkles.
 
 Here are images showing the behavior of the cloth with `ks = 50000 N/m`.
 
-![](images/p4_ks_50k_img0.png]
+![](images/p4_ks_50k_img0.png)
 
-![](images/p4_ks_50k_img1.png]
+![](images/p4_ks_50k_img1.png)
 
-![](images/p4_ks_50k_img2.png]
+![](images/p4_ks_50k_img2.png)
 
 ## Part 5
 
