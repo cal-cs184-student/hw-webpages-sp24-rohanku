@@ -11,17 +11,17 @@ Finally, we implemented various shaders to give our cloth color and texture.
 
 Some screenshots of the wireframe:
 
-![](images/p1_full_mesh.png]
-![](images/p1_zoomed_mesh.png]
+![](images/p1_full_mesh.png)
+![](images/p1_zoomed_mesh.png)
 
 Without shearing constraints:
-![](images/p1_wo_shearing.png]
+![](images/p1_wo_shearing.png)
 
 Shearing constraints only:
-![](images/p1_shearing_only.png]
+![](images/p1_shearing_only.png)
 
 All constraints:
-![](images/p1_all.png]
+![](images/p1_all.png)
 
 ## Part 2
 
@@ -87,13 +87,13 @@ All parameters were set at their default values.
 ## Part 3
 
 `ks = 5000`
-![](images/p3_5000.png]
+![](images/p3_5000.png)
 
 `ks = 500`
-![](images/p3_500.png]
+![](images/p3_500.png)
 
 `ks = 50000`
-![](images/p3_50000.png]
+![](images/p3_50000.png)
 
 For higher `ks` values, the cloth becomes more stiff, causing it to have less folds and conform less to the shape of the sphere.
 
