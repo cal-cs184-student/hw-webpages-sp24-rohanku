@@ -2,7 +2,10 @@
 
 ## Overview
 
-We implemented cloth simulation using point masses and springs. We added support for forces like gravity and intersection with collision objects.
+We implemented cloth simulation, treating the cloth as a collection of point masses and springs,
+and Verlet integration to update the positions of the masses over time.
+We added support for forces like gravity and intersection with collision objects.
+Finally, we implemented various shaders to give our cloth color and texture.
 
 ## Part 1
 
@@ -20,6 +23,67 @@ Shearing constraints only:
 All constraints:
 ![](images/p1_all.png]
 
+## Part 2
+
+In the subparts below, all parameters were set to their defaults
+except for the parameter being investigated.
+
+### Spring Constant
+
+With a low `ks`, the cloth has more fine-grained wrinkles, and it sags more in its final state.
+With a high `ks`, the cloth better retains its rectangular shape: it sags less, and has few wrinkles.
+Here's a visual comparison:
+
+`ks = 100 N/m`:
+
+![](images/p2_ks_100.png]
+
+`ks = 50000 N/m`:
+
+![](images/p2_ks_50k.png]
+
+### Density
+
+With a low density, the cloth sags less in its final state and has fewer wrinkles.
+It also looks "airy" as it falls slowly.
+With a high density, the opposite is true: the cloth sags more and has more wrinkles,
+and doesn't quite have the same illusion of falling slowly.
+
+A visual comparison of the final states:
+
+`density = 1 g/cm2`
+
+![](images/p2_density_1.png]
+
+`density = 100 g/cm2`
+
+![](images/p2_density_100.png]
+
+### Damping
+
+With a high damping, the cloth moves/falls very slowly.
+With a low damping, the cloth flutters wildly as it falls,
+and it takes longer to converge to its resting state.
+For 0 damping, the cloth may not ever converge.
+
+Here is a comparison of the cloth as it is falling.
+
+Damping = 1%
+
+![](images/p2_high_damping.png]
+
+Damping = 0%
+
+![](images/p2_low_damping.png]
+
+### Final State
+
+Here is an image of the cloth from `pinned4` in its final state.
+All parameters were set at their default values.
+
+![](images/p2_default_pinned4.png]
+
+
 ## Part 3
 
 `ks = 5000`
@@ -29,3 +93,39 @@ All constraints:
 `ks = 50000`
 
 For higher `ks` values, the cloth becomes more stiff, causing it to have less folds and conform less to the shape of the sphere.
+
+
+## Part 4
+
+Here are a few images of the falling cloth. All parameters are set to the default values.
+
+![](images/p4_img0.png]
+
+![](images/p4_img1.png]
+
+![](images/p4_img2.png]
+
+![](images/p4_img3.png]
+
+Using a lower density seems to reduce the driving force pushing the cloth to be flat;
+even after several seconds, the cloth is noticeably more wrinkled, and only a small
+portion of it lies flat on the plane.
+
+Here are images showing the behavior of the cloth with `density = 1 g/cm2`.
+
+![](images/p4_dens1_img0.png]
+
+![](images/p4_dens1_img1.png]
+
+![](images/p4_dens1_img2.png]
+
+A high `ks` makes the cloth "stiffer". It forms fewer wrinkles, and
+it takes longer to flatten out wrinkles.
+
+Here are images showing the behavior of the cloth with `ks = 50000 N/m`.
+
+![](images/p4_ks_50k_img0.png]
+
+![](images/p4_ks_50k_img1.png]
+
+![](images/p4_ks_50k_img2.png]
